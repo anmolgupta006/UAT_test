@@ -191,5 +191,14 @@ const puppeteer = require('puppeteer');
 
 	element = await page.$x(`//*[@id="submit-btn"]`);
 	await element[0].click();
+
+
+	try {
+        await synthetics.takeScreenshot("finishing the registration part", 'result');
+    } catch (ex) {
+        synthetics.addExecutionError('Unable to capture screenshot.', ex);
+    }
+
+
     await browser.close();
 })();
